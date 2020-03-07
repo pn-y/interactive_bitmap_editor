@@ -15,6 +15,10 @@ class ParserTest < Minitest::Test
     assert { result.success? }
     value = result.success
     assert { value[:action] == :draw_horizontal_segment }
+    assert { value[:color] == 'C' }
+    assert { value[:row] == 3 }
+    assert { value[:column_start] == 1 }
+    assert { value[:column_end] == 2 }
   end
 
   def test_draw_vertical_segment
@@ -22,6 +26,10 @@ class ParserTest < Minitest::Test
     assert { result.success? }
     value = result.success
     assert { value[:action] == :draw_vertical_segment }
+    assert { value[:color] == 'C' }
+    assert { value[:column] == 3 }
+    assert { value[:row_start] == 1 }
+    assert { value[:row_end] == 2 }
   end
 
   def test_color_pixel
@@ -29,6 +37,9 @@ class ParserTest < Minitest::Test
     assert { result.success? }
     value = result.success
     assert { value[:action] == :color_pixel }
+    assert { value[:x] == 2 }
+    assert { value[:y] == 1 }
+    assert { value[:color] == 'C' }
   end
 
   def test_clear_canvas
@@ -44,5 +55,7 @@ class ParserTest < Minitest::Test
     assert { result.success? }
     value = result.success
     assert { value[:action] == :create_canvas }
+    assert { value[:width] == 2 }
+    assert { value[:height] == 2 }
   end
 end
