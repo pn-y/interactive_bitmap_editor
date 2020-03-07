@@ -18,16 +18,6 @@ class ComandValidatorTest < Minitest::Test
     assert { result.failure? }
   end
 
-  def test_create_canvas_less_args
-    result = BitmapEditor::CommandValidator.call(action: :create_canvas, args: [1])
-    assert { result.failure? }
-  end
-
-  def test_create_canvas_more_args
-    result = BitmapEditor::CommandValidator.call(action: :create_canvas, args: [1, 2, 3])
-    assert { result.failure? }
-  end
-
   def test_print_canvas
     result = BitmapEditor::CommandValidator.call(action: :print_canvas, args: [])
     assert { result.success? }
