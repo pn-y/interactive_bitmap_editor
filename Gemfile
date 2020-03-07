@@ -14,3 +14,5 @@ group :development, :test do
   gem 'rubocop'
   gem 'solargraph'
 end
+
+gem "simplecov", "~> 0.18.5"
