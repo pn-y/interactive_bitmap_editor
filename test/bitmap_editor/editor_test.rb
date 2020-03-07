@@ -28,7 +28,7 @@ class EditorTest < Minitest::Test
 
   def test_draw_horizontal_segment
     canvas = BitmapEditor::Editor.create_new_canvas(3, 3)
-    new_canvas = BitmapEditor::Editor.draw_horizontal_segment(canvas, 2, 1, 2, 'Z')
-    assert { new_canvas == Canvas.new([%w[O O O], %w[Z Z O], %w[O O O]]) }
+    new_canvas = BitmapEditor::Editor.draw_horizontal_segment(canvas, 1, 2, 3, 'Z')
+    assert { new_canvas == Canvas.new([%w[O O O], %w[O O O], %w[Z Z O]]) }
   end
 end

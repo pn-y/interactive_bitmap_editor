@@ -50,7 +50,7 @@ class BitmapEditor
         Canvas.new(new_field)
       end
 
-      def draw_horizontal_segment(canvas, row_number, start_column, end_column, color)
+      def draw_horizontal_segment(canvas, start_column, end_column, row_number, color)
         # for i in (start_column - 1)..(end_column - 1) do
         #   canvas.field[row - 1][i] = color
         # end
