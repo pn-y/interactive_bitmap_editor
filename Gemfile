@@ -13,6 +13,7 @@ group :development, :test do
   gem 'rake'
   gem 'rubocop'
   gem 'solargraph'
+  gem 'dry-monads'
 end
 
 gem "simplecov", "~> 0.18.5"
