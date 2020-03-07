@@ -8,6 +8,7 @@ require 'pry'
 class BitmapEditor
   class << self
     def process(path)
+      canvas = Canvas.new
 
       content = File.read(path)
     end
