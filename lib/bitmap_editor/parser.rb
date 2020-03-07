@@ -1,5 +1,5 @@
 class BitmapEditor
-  class Validator
+  class Parser
     class << self
       def call()
       end
