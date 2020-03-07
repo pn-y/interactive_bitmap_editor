@@ -16,19 +16,19 @@ class EditorTest < Minitest::Test
 
   def test_color_pixel
     canvas = BitmapEditor::Editor.create_new_canvas(2, 2)
-    new_canvas = BitmapEditor::Editor.color_pixel(2, 2, 'Z')
+    new_canvas = BitmapEditor::Editor.color_pixel(canvas, 2, 2, 'Z')
     assert { new_canvas == Canvas.new([%w[O O], %w[O Z]]) }
   end
 
   def test_draw_vertical_segment
     canvas = BitmapEditor::Editor.create_new_canvas(3, 3)
-    new_canvas = BitmapEditor::Editor.test_draw_vertical_segment(2, 1, 2, 'Z')
+    new_canvas = BitmapEditor::Editor.draw_vertical_segment(canvas, 2, 1, 2, 'Z')
     assert { new_canvas == Canvas.new([%w[O Z O], %w[O Z O], %w[O O O]]) }
   end
 
   def test_draw_horizontal_segment
     canvas = BitmapEditor::Editor.create_new_canvas(3, 3)
-    new_canvas = BitmapEditor::Editor.test_draw_horizontal_segment(2, 1, 2, 'Z')
+    new_canvas = BitmapEditor::Editor.draw_horizontal_segment(canvas, 2, 1, 2, 'Z')
     assert { new_canvas == Canvas.new([%w[O O O], %w[Z Z O], %w[O O O]]) }
   end
 end

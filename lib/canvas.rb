@@ -6,4 +6,8 @@ class Canvas
   def initialize(field = [])
     @field = field
   end
+
+  def ==(another_canvas)
+    field == another_canvas.field
+  end
 end
