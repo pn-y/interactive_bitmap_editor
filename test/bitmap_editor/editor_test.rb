@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'minitest/autorun'
+require 'test_helper'
 
 class EditorTest < Minitest::Test
   def test_create_new_canvas
