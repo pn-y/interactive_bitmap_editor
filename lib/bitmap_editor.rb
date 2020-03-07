@@ -4,6 +4,7 @@ require_relative 'canvas'
 require_relative 'bitmap_editor/editor.rb'
 require_relative 'bitmap_editor/printer.rb'
 require_relative 'bitmap_editor/validator.rb'
+require_relative 'bitmap_editor/parser.rb'
 
 require 'pry'
 
