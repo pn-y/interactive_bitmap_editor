@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'canvas'
 require_relative 'bitmap_editor/editor.rb'
 require_relative 'bitmap_editor/printer.rb'

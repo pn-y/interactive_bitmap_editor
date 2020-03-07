@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BitmapEditor
   class Validator
     class << self

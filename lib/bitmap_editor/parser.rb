@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BitmapEditor
   class Parser
     class << self

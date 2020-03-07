@@ -1,4 +1,6 @@
-require "minitest/autorun"
+# frozen_string_literal: true
+
+require 'minitest/autorun'
 
 class EditorTest < Minitest::Test
   def test_create_new_table

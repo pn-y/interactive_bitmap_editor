@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Canvas
   attr_accessor :field
 
