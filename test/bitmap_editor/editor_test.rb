@@ -13,6 +13,6 @@ class EditorTest < Minitest::Test
   def test_draw_vertical_segment
   end
 
-  def test_draw_vertical_segment
+  def test_draw_horizontal_segment
   end
 end
