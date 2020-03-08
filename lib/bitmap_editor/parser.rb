@@ -4,12 +4,12 @@ require 'pry'
 
 class BitmapEditor
   class Parser
-    CREATE_CANVAS = 'I'.freeze
-    CLEAR_CANVAS = 'C'.freeze
-    PRINT_CANVAS = 'S'.freeze
-    COLOR_PIXEL = 'L'.freeze
-    DRAW_VERTICAL_SEGMENT = 'V'.freeze
-    DRAW_HORIZONTAL_SEGMENT = 'H'.freeze
+    CREATE_CANVAS = 'I'
+    CLEAR_CANVAS = 'C'
+    PRINT_CANVAS = 'S'
+    COLOR_PIXEL = 'L'
+    DRAW_VERTICAL_SEGMENT = 'V'
+    DRAW_HORIZONTAL_SEGMENT = 'H'
     COMMANDS = {
       CREATE_CANVAS => { action: :create_canvas, args_count: 2 },
       CLEAR_CANVAS => { action: :clear_canvas, args_count: 0 },

@@ -1,10 +1,11 @@
 # frozen_string_literal: true
+
 require 'pry'
 require 'dry/monads'
 
 class BitmapEditor
   class Editor
-    DEFAULT_COLOR = 'O'.freeze
+    DEFAULT_COLOR = 'O'
 
     class << self
       include Dry::Monads[:result]
