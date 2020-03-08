@@ -38,30 +38,35 @@ class BitmapEditor
       end
 
       def color_pixel(canvas:, x_coord:, y_coord:, color:)
+        return Failure('Canvas was not created') unless canvas
+
         if x_coord > canvas.width || y_coord > canvas.height
-          return Failure("Cannot color point [#{x_coord},#{y_coord}] on canvas #{canvas.width}x#{cavnas.height}")
+          return Failure("Cannot color point [#{x_coord},#{y_coord}] on canvas #{canvas.width}x#{canvas.height}")
         end
 
         Success(canvas.color_pixel(x_coord, y_coord, color))
       end
 
       def draw_vertical_segment(canvas:, column:, row_start:, row_end:, color:)
+        return Failure('Canvas was not created') unless canvas
         if column > canvas.width || row_start > canvas.height || row_end > canvas.height
-          return Failure("Cannot draw vertical segment in column #{column} from row #{row_start} to #{row_end} on canvas #{canvas.width}x#{cavnas.height}")
+          return Failure("Cannot draw vertical segment in column #{column} from row #{row_start} to #{row_end} on canvas #{canvas.width}x#{canvas.height}")
         end
 
         Success(canvas.draw_vertical_segment(column, row_start, row_end, color))
       end
 
       def draw_horizontal_segment(canvas:, column_start:, column_end:, row:, color:)
+        return Failure('Canvas was not created') unless canvas
         if row > canvas.height || column_start > canvas.width || column_end > canvas.width
-          return Failure("Cannot draw horizontal segment in row #{row} from column #{column_start} to #{column_end} on canvas #{canvas.width}x#{cavnas.height}")
+          return Failure("Cannot draw horizontal segment in row #{row} from column #{column_start} to #{column_end} on canvas #{canvas.width}x#{canvas.height}")
         end
 
         Success(canvas.draw_horizontal_segment(row, column_start, column_end, color))
       end
 
       def print_canvas(canvas:)
+        return Failure('Canvas was not created') unless canvas
         Printer.call(canvas)
         Success(canvas)
       end
