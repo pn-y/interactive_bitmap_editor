@@ -14,6 +14,7 @@ group :development, :test do
   gem 'rubocop'
   gem 'solargraph'
   gem 'dry-monads'
+  gem 'dry-cli'
 end
 
 gem "simplecov", "~> 0.18.5"

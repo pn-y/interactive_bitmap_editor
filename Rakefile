@@ -10,7 +10,7 @@ Rake::TestTask.new do |t|
 end
 
 task :run, [:path] do |_task, args|
-  ruby "bin/runner.rb #{args[:path]}"
+  ruby "bin/runner.rb run #{args[:path]}"
 end
 
 task default: :test
