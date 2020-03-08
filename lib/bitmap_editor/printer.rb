@@ -4,7 +4,7 @@ class BitmapEditor
   class Printer
     class << self
       def call(canvas)
-        canvas.field.each do |row|
+        canvas.rows.each do |row|
           row.each do |value|
             print value
           end
