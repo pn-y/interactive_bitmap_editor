@@ -22,4 +22,10 @@ class BitmapEditorTest < Minitest::Test
     result = BitmapEditor.new.process(example_path)
     assert { result.failure? }
   end
+
+  def test_process_with_no_commands
+    example_path = Dir.pwd + '/test/fixtures/example_no_commands.txt'
+    result = BitmapEditor.new.process(example_path)
+    assert { result.success? }
+  end
 end
