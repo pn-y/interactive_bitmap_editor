@@ -49,6 +49,11 @@ class ParserTest < Minitest::Test
     assert { value[:action] == :clear_canvas }
   end
 
+  def test_clear_canvas_with_more_args
+    result = BitmapEditor::Parser.call('C 1')
+    assert { result.failure? }
+  end
+
   def test_create_new_canvas
     result = BitmapEditor::Parser.call('I 2 2')
 
@@ -57,5 +62,11 @@ class ParserTest < Minitest::Test
     assert { value[:action] == :create_canvas }
     assert { value[:width] == 2 }
     assert { value[:height] == 2 }
+  end
+
+  def test_create_new_canvas_with_invalid_args
+    result = BitmapEditor::Parser.call('I 2 2e')
+
+    assert { result.failure? }
   end
 end
