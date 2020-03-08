@@ -12,8 +12,6 @@ class BitmapEditor
   include Dry::Monads[:result, :do]
 
   def process(path)
-    canvas = Canvas.new
-
     content = File.read(path)
     commands = content.split("\n")
     parsed_commands = yield parse_commands(commands)
