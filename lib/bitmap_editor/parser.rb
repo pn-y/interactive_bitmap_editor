@@ -19,6 +19,7 @@ class BitmapEditor
       PRINT_CANVAS => { action: :print_canvas, args_count: 0 },
     }
     ALLOWED_COLORS = [*('A'..'Z')].freeze
+    ALLOWED_SIZE_RANGE = (1..250)
 
     class << self
       include Dry::Monads[:result]
@@ -40,21 +41,25 @@ class BitmapEditor
           cast_result = cast_to_int([width, height])
           return Failure("Doesn't know how to parse '#{string_command}'") if cast_result.failure?
           width, height = cast_result.success
+          return Failure("Doesn't know how to parse '#{string_command}'") unless ALLOWED_SIZE_RANGE.include?(width) && ALLOWED_SIZE_RANGE.include?(height)
           Success(action: COMMANDS[CREATE_CANVAS][:action], width: width, height: height)
-          in [COLOR_PIXEL, x, y, String => color] if ALLOWED_COLORS.include?(color)
+        in [COLOR_PIXEL, x, y, String => color] if ALLOWED_COLORS.include?(color)
           cast_result = cast_to_int([x, y])
           return Failure("Doesn't know how to parse '#{string_command}'") if cast_result.failure?
           x, y = cast_result.success
+          return Failure("Doesn't know how to parse '#{string_command}'") unless ALLOWED_SIZE_RANGE.include?(x) && ALLOWED_SIZE_RANGE.include?(y)
           Success(action: COMMANDS[COLOR_PIXEL][:action], x: x, y: y, color: color)
         in [DRAW_HORIZONTAL_SEGMENT, column_start, column_end, row, String => color] if ALLOWED_COLORS.include?(color)
           cast_result = cast_to_int([column_start, column_end, row])
           return Failure("Doesn't know how to parse '#{string_command}'") if cast_result.failure?
           column_start, column_end, row = cast_result.success
+          return Failure("Doesn't know how to parse '#{string_command}'") unless ALLOWED_SIZE_RANGE.include?(row) && ALLOWED_SIZE_RANGE.include?(column_end) && ALLOWED_SIZE_RANGE.include?(column_start)
           Success(action: COMMANDS[DRAW_HORIZONTAL_SEGMENT][:action], column_start: column_start, column_end: column_end, row: row, color: color)
         in [DRAW_VERTICAL_SEGMENT, column, row_start, row_end, String => color] if ALLOWED_COLORS.include?(color)
           cast_result = cast_to_int([column, row_start, row_end])
           return Failure("Doesn't know how to parse '#{string_command}'") if cast_result.failure?
           column, row_start, row_end = cast_result.success
+          return Failure("Doesn't know how to parse '#{string_command}'") unless ALLOWED_SIZE_RANGE.include?(column) && ALLOWED_SIZE_RANGE.include?(row_end) && ALLOWED_SIZE_RANGE.include?(row_start)
           Success(action: COMMANDS[DRAW_VERTICAL_SEGMENT][:action], row_start: row_start, row_end: row_end, column: column, color: color)
         else
           Failure("Doesn't know how to parse '#{string_command}'")
