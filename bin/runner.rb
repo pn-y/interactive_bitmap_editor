@@ -30,7 +30,7 @@ class BitmapEditor
 
         def call(command_file:, **)
           if File.exist?(command_file)
-            BitmapEditor.new.process(command_file)
+            BitmapEditor.new.run(command_file)
           else
             puts 'Target file does not exist'
             puts 'Exitting'

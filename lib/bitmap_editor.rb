@@ -9,25 +9,38 @@ require_relative 'bitmap_editor/parser.rb'
 require 'pry'
 
 class BitmapEditor
-  include Dry::Monads[:result, :do]
+  include Dry::Monads[:result, :do, :list]
+
+  def run(path)
+    result = process(path)
+    if result.success?
+      puts 'Done'
+    else
+      puts result.failure
+    end
+  end
 
   def process(path)
     content = File.read(path)
     commands = content.split("\n")
-    parsed_commands = yield parse_commands(commands)
-    execute_commands(parsed_commands)
+
+    return Success() if commands.empty?
+
+    parsed_commands = yield parse_commands(commands).traverse.to_result
+    canvas = yield execute_commands(parsed_commands)
+    Success(canvas)
   end
 
   private
 
   def parse_commands(commands)
-    commands.map { |command| Parser.call(command) }
+    result = commands.map { |command| Parser.call(command) }
+    List::Validated[*result]
   end
 
   def execute_commands(parsed_commands)
-    canvas = nil
-    parsed_commands.fmap do |command|
-      canvas = yield edit(canvas: canvas, **command)
+    canvas = parsed_commands.foldl(nil) do |canvas, command|
+      yield edit(canvas: canvas, **command)
     end
     Success(canvas)
   end
