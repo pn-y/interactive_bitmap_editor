@@ -16,4 +16,10 @@ class BitmapEditorTest < Minitest::Test
     result = BitmapEditor.new.process(example_path)
     assert { result.to_s == example_result }
   end
+
+  def test_process_with_error
+    example_path = Dir.pwd + '/test/fixtures/example_with_error.txt'
+    result = BitmapEditor.new.process(example_path)
+    assert { result.failure? }
+  end
 end
