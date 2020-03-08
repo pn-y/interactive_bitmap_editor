@@ -24,6 +24,18 @@ class EditorTest < Minitest::Test
     assert { result.success.to_s == expected }
   end
 
+  def test_color_pixel_out_of_bounds
+    canvas = BitmapEditor::Editor.create_new_canvas(width: 2, height: 2).value!
+    result = BitmapEditor::Editor.color_pixel(canvas: canvas, x_coord: 3, y_coord: 2, color: 'Z')
+    assert { result.failure? }
+  end
+
+  def test_draw_vertical_segment_out_of_bound
+    canvas = BitmapEditor::Editor.create_new_canvas(width: 3, height: 3).value!
+    result = BitmapEditor::Editor.draw_vertical_segment(canvas: canvas, column: 4, row_start: 1, row_end: 2, color: 'Z')
+    assert { result.failure? }
+  end
+
   def test_draw_vertical_segment
     canvas = BitmapEditor::Editor.create_new_canvas(width: 3, height: 3).value!
     result = BitmapEditor::Editor.draw_vertical_segment(canvas: canvas, column: 2, row_start: 1, row_end: 2, color: 'Z')
@@ -36,5 +48,11 @@ class EditorTest < Minitest::Test
     result = BitmapEditor::Editor.draw_horizontal_segment(canvas: canvas, column_start: 1, column_end: 2, row: 3, color: 'Z')
     expected = [%w[O O O], %w[O O O], %w[Z Z O]].map { _1.join }.join("\n")
     assert { result.success.to_s == expected }
+  end
+
+  def test_draw_horizontal_segment_out_of_bounds
+    canvas = BitmapEditor::Editor.create_new_canvas(width: 3, height: 3).value!
+    result = BitmapEditor::Editor.draw_horizontal_segment(canvas: canvas, column_start: 8, column_end: 2, row: 3, color: 'Z')
+    assert { result.failure? }
   end
 end
