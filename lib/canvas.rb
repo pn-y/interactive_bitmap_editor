@@ -10,4 +10,8 @@ class Canvas
   def ==(another_canvas)
     field == another_canvas.field
   end
+
+  def to_s
+    field.map { |row| row.join }.join("\n")
+  end
 end
