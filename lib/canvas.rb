@@ -19,10 +19,10 @@ class Canvas
     field
   end
 
-  def color_pixel(x, y, color)
-    new_field = self.field.map.with_index do |row, row_index|
+  def color_pixel(x_coord, y_coord, color)
+    new_field = field.map.with_index do |row, row_index|
       row.map.with_index do |column_value, column_index|
-        if row_index + 1 == y && column_index + 1 == x
+        if row_index + 1 == y_coord && column_index + 1 == x_coord
           color
         else
           column_value

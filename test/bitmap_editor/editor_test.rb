@@ -11,7 +11,7 @@ class EditorTest < Minitest::Test
 
   def test_clear_canvas
     canvas = BitmapEditor::Editor.create_new_canvas(width: 2, height: 2).value!
-    canvas = BitmapEditor::Editor.color_pixel(canvas: canvas, x: 2, y: 2, color: 'Z').value!
+    canvas = BitmapEditor::Editor.color_pixel(canvas: canvas, x_coord: 2, y_coord: 2, color: 'Z').value!
     result = BitmapEditor::Editor.clear_canvas(canvas: canvas)
     expected = [%w[O O], %w[O O]].map { _1.join }.join("\n")
     assert { result.success.to_s == expected }
@@ -19,7 +19,7 @@ class EditorTest < Minitest::Test
 
   def test_color_pixel
     canvas = BitmapEditor::Editor.create_new_canvas(width: 2, height: 2).value!
-    result = BitmapEditor::Editor.color_pixel(canvas: canvas, x: 2, y: 2, color: 'Z')
+    result = BitmapEditor::Editor.color_pixel(canvas: canvas, x_coord: 2, y_coord: 2, color: 'Z')
     expected = [%w[O O], %w[O Z]].map { _1.join }.join("\n")
     assert { result.success.to_s == expected }
   end

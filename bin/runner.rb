@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
-require "bundler/setup"
-require "dry/cli"
+
+require 'bundler/setup'
+require 'dry/cli'
 
 require_relative '../lib/bitmap_editor'
 
@@ -11,20 +12,20 @@ class BitmapEditor
       extend Dry::CLI::Registry
 
       class Version < Dry::CLI::Command
-        desc "Print version"
+        desc 'Print version'
 
         def call(*)
-          puts "1.0.0"
+          puts '1.0.0'
         end
       end
 
       class Process < Dry::CLI::Command
-        desc "Process bitmap editor commands"
+        desc 'Process bitmap editor commands'
 
-        argument :command_file, required: true, desc: "File with commands"
+        argument :command_file, required: true, desc: 'File with commands'
 
         example [
-          "path/to/command/file # Start Foo at root directory"
+          'path/to/command/file # Start Foo at root directory'
         ]
 
         def call(command_file:, **)
@@ -36,8 +37,8 @@ class BitmapEditor
           end
         end
       end
-      register "version", Version, aliases: ["v", "-v", "--version"]
-      register "run",   Process
+      register 'version', Version, aliases: ['v', '-v', '--version']
+      register 'run', Process
     end
   end
 end

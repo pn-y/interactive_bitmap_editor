@@ -37,8 +37,8 @@ class ParserTest < Minitest::Test
     assert { result.success? }
     value = result.success
     assert { value[:action] == :color_pixel }
-    assert { value[:x] == 2 }
-    assert { value[:y] == 1 }
+    assert { value[:x_coord] == 2 }
+    assert { value[:y_coord] == 1 }
     assert { value[:color] == 'C' }
   end
 

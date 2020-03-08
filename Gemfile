@@ -6,6 +6,8 @@ ruby '~> 2.7.0'
 
 group :development, :test do
   gem 'awesome_print'
+  gem 'dry-cli'
+  gem 'dry-monads'
   gem 'minitest'
   gem 'minitest-power_assert'
   gem 'pry'
@@ -13,8 +15,6 @@ group :development, :test do
   gem 'rake'
   gem 'rubocop'
   gem 'solargraph'
-  gem 'dry-monads'
-  gem 'dry-cli'
 end
 
-gem "simplecov", "~> 0.18.5"
+gem 'simplecov', '~> 0.18.5'
